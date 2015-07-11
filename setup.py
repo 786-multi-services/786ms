@@ -9,7 +9,7 @@ if 'REDISCLOUD_URL' in os.environ and 'REDISCLOUD_PORT' in os.environ and 'REDIS
      packages.append('django-redis-cache')
      packages.append('hiredis')
 
-setup(name='YourAppName',
+setup(name='786ms',
       version='1.0',
       description='786 Multi Services',
       author='zeeshan',
