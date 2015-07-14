@@ -4,7 +4,6 @@
 {% block head_block%}
 	<!--custom css-->
 	<link rel="stylesheet" href="{% static 'home/css/home_main.css'%}"/>
-	<script src='https://www.google.com/recaptcha/api.js'></script>
 {% endblock %}
 {% block body_head_title%}
 				<h1 class="heading col-xs-8 col-xs-offset-2">786 Multi Services<br>
@@ -12,6 +11,9 @@
 {% endblock%}
 {% block body_head_content %}
 				<h4>We have all the services you need.</h4>
+{% endblock%}
+{%block js_include%}
+		<script src='https://www.google.com/recaptcha/api.js'></script>
 {% endblock%}
 {% block body_block %}
 	<div class="container">
@@ -91,8 +93,8 @@
 					<div >
 						<h5 class="team-name">Diwan Akhlak Ahmed Khan <small>Managing Director</small></h5>
 						<p>Owner and Managing Director of 786 Multi services</p>
-						<a href="#" class="btn btn-contacts btn-facebook"><i class="fa fa-facebook"></i></a>
-						<a href="#" class="btn btn-contacts btn-twitter"><i class="fa fa-twitter"></i></a>
+						<a href="{{daakhan_fb}}" class="btn btn-contacts btn-facebook" target="_blank"><i class="fa fa-facebook"></i></a>
+						<a href="{{daakhan_tw}}" class="btn btn-contacts btn-twitter" target="_blank"><i class="fa fa-twitter"></i></a>
 					</div>
 				</div>
 			</div>
@@ -103,8 +105,8 @@
 					<div class="caption">
 						<h5 class="team-name">Sarfaraz Nawaz <small>Manager</small></h5>
 						<p>Manager of 786 multi services</p>
-						<a href="#" class="btn btn-contacts btn-facebook"><i class="fa fa-facebook"></i></a>
-						<a href="#" class="btn btn-contacts btn-twitter"><i class="fa fa-twitter"></i></a>
+						<a href="{{sarfaraz_fb}}" class="btn btn-contacts btn-facebook" target="_blank"><i class="fa fa-facebook"></i></a>
+						<a href="{{sarfaraz_tw}}" class="btn btn-contacts btn-twitter" target="_blank"><i class="fa fa-twitter"></i></a>
 					</div>
 				</div>
 			</div>
@@ -115,8 +117,8 @@
 					<div class="caption">
 						<h5 class="team-name">Zeeshan Khan <small>Designer</small></h5>
 						<p>Designer of this website</p>
-						<a href="#" class="btn btn-contacts btn-facebook"><i class="fa fa-facebook"></i></a>
-						<a href="#" class="btn btn-contacts btn-twitter"><i class="fa fa-twitter"></i></a>
+						<a href="{{zeeshan_fb}}" class="btn btn-contacts btn-facebook" target="_blank"><i class="fa fa-facebook"></i></a>
+						<a href="{{zeeshan_tw}}" class="btn btn-contacts btn-twitter" target="_blank"><i class="fa fa-twitter"></i></a>
 					</div>
 				</div>
 			</div>
@@ -129,9 +131,6 @@
 			<div class="col-md-10 col-lg-8 col-sm-12 col-md-offset-1 col-lg-offset-2">
 				<form class="form" method="post" action=".">
 					<div class="row">
-						{% if error_msg%}
-							<div class="alert alert-danger">{{error_msg}}</div>
-						{% endif %}
 						{% if success_msg %}
 							<div class="alert alert-success">{{success_msg}}</div>
 						{% endif %}
@@ -139,19 +138,24 @@
 					<div class="row">
 						{% csrf_token %}
 						<div class="col-sm-6">
-							<div class="form-group">
+							<div class="form-group {%if form.name.errors%}error{%endif%}">
 								{{form.name}}
+								{{form.name.errors}}
 							</div>
-							<div class="form-group">
+							<div class="form-group {%if form.email.errors%}error{%endif%}">
 								{{form.email}}
+								{{form.email.errors}}
 							</div>
 							<div class="form-group">
-								{{form.captcha}}
+								<div class="input-group"> 
+									{{form.captcha}}{{form.captcha.errors}}	
+								</div>
 							</div>
 						</div>
 						<div class="col-sm-6">
 							<div class="form-group">
 								{{form.message}}
+								{{form.message.errors}}
 							</div>
 						</div>
 					</div>
@@ -169,4 +173,5 @@
 	</div>
 		</div>
 {% endblock %}
+
 

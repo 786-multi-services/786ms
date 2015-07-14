@@ -7,7 +7,14 @@ from home.models import User,Message
 from .forms import ContactForm
 
 def index(request,tag='home'):
-	return_data={'active_nav_link':tag,'title':'786 Multi Services','is_index':True}
+	return_data={'active_nav_link':tag,'title':'786 Multi Services','is_index':True,
+	'zeeshan_fb':'https://www.facebook.com/zeeshankhan.1001',
+	'zeeshan_tw':'https://twitter.com/zkhan1093',
+	'sarfaraz_fb':'https://www.facebook.com/sarfaraz.nawaz.775',
+	'sarfaraz_tw':'https://twitter.com/shaibzada',
+	'daakhan_fb':'https://www.facebook.com/profile.php?id=100006601905636',
+	'daakhan_tw':'#',
+	}
 	if request.method=='POST':
 		form=ContactForm(request.POST)
 		if form.is_valid():
@@ -19,8 +26,6 @@ def index(request,tag='home'):
 			user.message_set.create(msg=request.POST.get("message"),time=timezone.now())
 			return_data['success_msg']='Thank You '+user.name+', We will contact you soon.'
 			form=ContactForm()
-		else:
-			return_data['error_msg']='Invalid data'
 	else:
 		form=ContactForm()
 	return_data['form']=form

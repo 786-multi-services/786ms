@@ -4,16 +4,6 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 		{% load staticfiles %}
 		<title>{{title}}</title>
-		<!-- JQuery -->
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-		
-		<!--Jquery UI-->
-		<script src="{% static 'ms786/js/jquery-ui.min.js' %}"></script>
-		<link rel="stylesheet" href="{% static 'ms786/css/jquery-ui.min.css'%}"/>
-		
-		<!--Custom JQuery/Javascript-->
-		<script src="{% static 'ms786/js/main.js' %}"></script>
-		
 		<!--Font Awesome-->
 		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 		
@@ -89,6 +79,15 @@
 			</div>
 		</div>
 		
+		<!-- JQuery -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 		
+		<!--Jquery UI-->
+		<script src="{% static 'ms786/js/jquery-ui.min.js' %}"></script>
+		<link rel="stylesheet" href="{% static 'ms786/css/jquery-ui.min.css'%}"/>
+		
+		<!--Custom JQuery/Javascript-->
+		<script src="{% static 'ms786/js/main.js' %}"></script>
+		{% block js_include%}{% endblock%}
 	</body>
 </html>

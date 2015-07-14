@@ -8,7 +8,6 @@ packages = ['Django<=1.6',]
 if 'REDISCLOUD_URL' in os.environ and 'REDISCLOUD_PORT' in os.environ and 'REDISCLOUD_PASSWORD' in os.environ:
      packages.append('django-redis-cache')
      packages.append('hiredis')
-     packages.append('django-nocaptcha-recaptcha')
 
 setup(name='786ms',
       version='1.0',

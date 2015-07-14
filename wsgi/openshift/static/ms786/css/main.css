@@ -430,3 +430,6 @@ input[type="color"]:focus,
 .success{
 	color:#4aaaa5;
 }
+.error{
+	border:1px solid red;
+}
