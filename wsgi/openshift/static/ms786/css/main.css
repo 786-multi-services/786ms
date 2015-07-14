@@ -227,11 +227,12 @@ li{
 }
 .navbar-default .in{
 	background-color:grey;
-	transition-duration:0.1s;
+	transition-duration:0.03s;
+	box-shadow: 0 5px 5px rgba(0,0,0,0.5)
 }
 .navbar-inverse .in{
 	background-color:white;
-	transition-duration:0.1s;
+	transition-duration:0.03s;
 }
 .section {
   padding-bottom: 40px;
