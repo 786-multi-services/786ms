@@ -7,9 +7,8 @@
 		<!--Font Awesome-->
 		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 		
-		<!--Bootstrap-->
+		<link rel="stylesheet" href="{% static 'ms786/css/jquery-ui.min.css'%}"/>
 		<link rel="stylesheet" href="{% static 'ms786/css/bootstrap.min.css'%}"/>
-		<script src="{% static 'ms786/js/bootstrap.min.js' %}"></script>
 		
 		<!--Global css-->
 		<link rel="stylesheet" href="{% static 'ms786/css/main.css'%}"/>
@@ -84,10 +83,13 @@
 		
 		<!--Jquery UI-->
 		<script src="{% static 'ms786/js/jquery-ui.min.js' %}"></script>
-		<link rel="stylesheet" href="{% static 'ms786/css/jquery-ui.min.css'%}"/>
+		
+		<!--Bootstrap-->
+		<script src="{% static 'ms786/js/bootstrap.min.js' %}"></script>
 		
 		<!--Custom JQuery/Javascript-->
 		<script src="{% static 'ms786/js/main.js' %}"></script>
+		
 		{% block js_include%}{% endblock%}
 	</body>
 </html>
