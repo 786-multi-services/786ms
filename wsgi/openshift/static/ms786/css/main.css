@@ -7,6 +7,9 @@ body{
 	font-size:12px;
 	font-weight:600;
 }
+@media (max-width: 360px) {
+	body {min-width:360px;}
+}
 h1,
 h2,
 h3,
@@ -222,7 +225,14 @@ li{
 .navbar-default .navbar-toggle:focus .icon-bar,.navbar-default .navbar-toggle:hover .icon-bar {
 	background-color:#f67280;
 }
-
+.navbar-default .in{
+	background-color:grey;
+	transition-duration:0.3s;
+}
+.navbar-inverse .in{
+	background-color:white;
+	transition-duration:0.3s;
+}
 .section {
   padding-bottom: 40px;
   border-bottom: 1px solid #eee;  
@@ -233,7 +243,7 @@ li{
 	height:100%;
 	margin-top:-60px;
 }
-#footer,#push{
+#push{
 	height: 60px;
 } 
 #footer {
@@ -259,10 +269,8 @@ li{
   /* Lastly, apply responsive CSS fixes as necessary */ 
 @media(max-width: 767px) {
 	#footer {
-		margin-left: -20px;
-		margin-right:-20px;
-		padding-left: 20px;
-		padding-right: 20px;
+		margin-right:0;
+		margin-left:0;
 	}
 }
 h1>small{
