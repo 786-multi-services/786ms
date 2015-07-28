@@ -1,15 +1,10 @@
 from django.db import models
-import uuid
+import random
 from django.contrib.auth.models import User
 
-tokens=[]
+
 def get_token():
-	res=uuid.uuid4().get_hex()[-8:]
-	while res in tokens:
-		res=uuid.uuid4().get_hex()[-8:]
-	tokens.append(res)
-	print tokens
-	return res
+	return ''.join([random.choice('0123456789ABCDEF') for x in range(8)])
 	
 class StudentToken(models.Model):
 	name=models.CharField(max_length=100)
@@ -26,8 +21,8 @@ class Student(models.Model):
 	care_of_choices=[('Parents','Parents'),('Gardians','Gardians')]
 	gender_choices=[('Male','Male'),('Female','Female'),('others','others')]
 	category_choices=[('General','General'),('SC','SC'),('ST','ST'),('Other Backward Classes','Other Backward Classes')]
-	occupation_choices=[('Governament','Governament'),('Government undertaking','Government undertaking'),('self employed','self employed'),('others','others')]
-	highest_educational_qualification_choices=[('Others','Others'),('Graduation or heigher','Graduation or heigher'),('Polytechnic Diploma','Polytechnic Diploma'),('Below 10th','Below 10th'),('10th Pass','10th Pass'),('12th Pass','12th Pass'),('10th + ITI','10th + ITI')]
+	occupation_choices=[('Government','Government'),('Government undertaking','Government undertaking'),('self employed','self employed'),('others','others')]
+	highest_educational_qualification_choices=[('Others','Others'),('Graduation or higher','Graduation or higher'),('Polytechnic Diploma','Polytechnic Diploma'),('Below 10th','Below 10th'),('10th Pass','10th Pass'),('12th Pass','12th Pass'),('10th + ITI','10th + ITI')]
 	#applied_as_choices=[('Direct','Direct'),('Institute','Institute')]
 	
 	user=models.OneToOneField(User,related_name='student')

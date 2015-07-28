@@ -139,7 +139,7 @@ if ON_OPENSHIFT:
 	MEDIA_URL="/media/"
 else:
 	MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-	MEDIA_URL="/media/"
+	MEDIA_URL="/home/zeeshan/Desktop/Websites/ms786-os/new/wsgi/openshift/media/"
 
 NORECAPTCHA_SITE_KEY = '6Ld_lQkTAAAAAIitG4r-YKH_0I_w5W-Q_WG8KzZV'
 NORECAPTCHA_SECRET_KEY = '6Ld_lQkTAAAAAGr4pBnBzL9ZyDOQvbt2ndYj8Klz'
