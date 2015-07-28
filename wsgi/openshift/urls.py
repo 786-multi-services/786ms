@@ -3,7 +3,6 @@ from django.conf.urls.static import static
 from django.conf import settings
 from django.contrib import admin
 admin.autodiscover()
-
 urlpatterns = patterns('',
 	url(r'^',include('home.urls')),
 	url(r'^career/',include('career.urls')),
