@@ -3,7 +3,7 @@
 	<head>
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 		{% load staticfiles %}
-		<title>{{title}}</title>
+		<title>786 Multi Services</title>
 		<!--Font Awesome-->
 		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 		
@@ -12,6 +12,7 @@
 		
 		<!--Global css-->
 		<link rel="stylesheet" href="{% static 'ms786/css/main.css'%}"/>
+		<link rel="stylesheet" href="{% static 'ms786/css/main_.css'%}"/>
 		
 		<!-- Google Font-->
 		<link href="http://fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet" type="text/css">
@@ -22,7 +23,7 @@
 	<body>
 		<div id="wrap">
 			<nav class="navbar navbar-default navbar-fixed-top">
-			<div class="container">
+			<div class="container-fluid">
 				<div class="navbar-header">
 					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" arial-expanded="false" aria-controls="navbar">
 						<span class="sr-only">Toggle navigation</span>
@@ -35,11 +36,13 @@
 				<div id="navbar" class="navbar-collapse collapse navbar-right">
 					<ul class="nav navbar-nav">
 						<li><a href="{% if is_index %}#home{% else %}/#home{%endif%}">Home</a></li>
-						<li><a href="{% if is_index %}#about{% else %}/#about{%endif%}">About</a></li>
 						<li><a href="{% if is_index %}#services{% else %}/#services{%endif%}">Services</a></li>
 						<li><a href="{% if is_index %}#career{% else %}/#career{%endif%}">Career</a></li>
 						<li><a href="{% if is_index %}#professionals{% else %}/#professionals{%endif%}">Team</a></li>
+						<li><a href="{% if is_index %}#about{% else %}/#about{%endif%}">About</a></li>
 						<li><a href="{% if is_index %}#contact{% else %}/#contact{%endif%}">Contact Us</a></li>
+						<li><a href="/students/">Students</a></li>
+						<li><a href="/students/manager/">Manager</a></li>
 					</ul>
 				</div>
 				

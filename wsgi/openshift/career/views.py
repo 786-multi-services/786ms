@@ -70,6 +70,5 @@ def trainer_view(request,token):
 		})
 	except:
 		return error(request)
-		
 def error(request):
 	return render(request,'404.html')

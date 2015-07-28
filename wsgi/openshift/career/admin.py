@@ -1,7 +1,7 @@
 import hashlib
 from django.contrib import admin
 
-from .models import User,Qualification,Experience,Token
+from .models import *
 
 class QualificationInline(admin.TabularInline):
 	model=Qualification

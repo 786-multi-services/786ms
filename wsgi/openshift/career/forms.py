@@ -1,5 +1,5 @@
 from django import forms
-from .models import User,Token,Experience,Qualification
+from .models import *
 from django.forms.models import inlineformset_factory
 from django.forms.widgets import TextInput
 from django.forms import ModelForm
