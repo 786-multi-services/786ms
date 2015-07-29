@@ -19,11 +19,14 @@ def std_login(request):
 				username=request.POST['username']
 				password=request.POST['password']
 				user=authenticate(username=username, password=password)
-				if user is not None and Group.objects.get(name="student") in user.groups.all():
-					login(request, user)
-					return HttpResponseRedirect("details/")
+				if user is not None:
+					if Group.objects.get(name="student") in user.groups.all():
+						login(request, user)
+						return HttpResponseRedirect("details/")
+					else:
+						msg='No such student'
 				else:
-					msg='No Such Student'
+					msg='Incorrect username or password'
 		else:
 			#GET singin form
 			pass
@@ -71,7 +74,6 @@ def signout(request):
 def std_register(request):
 	if request.method=='POST':
 		form=StudentRegisterationForm(request.POST,request.FILES)
-		
 		if form.is_valid():
 			student=form.save(commit=False)
 			#user creating 
@@ -95,17 +97,96 @@ def std_register(request):
 		form=StudentRegisterationForm()
 	return render(request,'students/registration_form.html',{'form':form})
 
+def std_update(request,pk):
+	group=Group.objects.get(name="manager")
+	msg=''
+	if request.user.is_authenticated() and group in request.user.groups.all():
+		data={'group':group}
+		student=Student.objects.get(pk=pk)
+		data['student']=student
+		if request.method=="POST":
+			form=ManagerStudentUpdateForm(request.POST,request.FILES,instance=student)
+			if form.is_valid():
+				student=form.save()
+				#check password to update
+				if 'password1' in form.cleaned_data and form.cleaned_data['password1']:
+					student.user.set_password(form.cleaned_data['password1'])
+					student.user.save()
+				#check for email change
+				if student.user.email!=form.cleaned_data['email']:
+					student.user.email=form.cleaned_data['email']
+					student.user.save()
+				#check for first_name
+				if student.user.first_name!=form.cleaned_data['first_name']:
+					student.user.first_name=form.cleaned_data['first_name']
+					student.user.save()
+				#check for last_name
+				if student.user.last_name!=form.cleaned_data['last_name']:
+					student.user.last_name=form.cleaned_data['last_name']
+					student.user.save()
+				msg="Details updated"
+				initial={'ttoken':student.token.token,'username':student.user.username,'first_name':student.user.first_name,'last_name':student.user.last_name,'email':student.user.email}
+				form=ManagerStudentUpdateForm(instance=data['student'],initial=initial)
+			else:
+				msg="Invalid Data!! Please provide valid input"
+		else:
+			initial={'ttoken':student.token.token,'username':student.user.username,'first_name':student.user.first_name,'last_name':student.user.last_name,'email':student.user.email}
+			form=ManagerStudentUpdateForm(instance=data['student'],initial=initial)
+		data['form']=form
+		if msg:
+			data['msg']=msg
+		return render(request,'students/std_update.html',data)
+	else:
+		return HttpResponseRedirect("/student/manager")
+
 def get_random_token():
 	return ''.join([random.choice('0123456789ABCDEF') for x in range(8)])
 	
 def manager_panel(request):
-	data={}
-	if request.user.is_authenticated() and Group.objects.get(name="manager") in request.user.groups.all():
+	group=Group.objects.get(name="manager")
+	if request.user.is_authenticated() and group in request.user.groups.all():
+		data={'group':group}
+		return render(request,'students/manager_panel.html',data)
+	else:
+		return HttpResponseRedirect("/student/manager")
+		
+def std_list(request):
+	group=Group.objects.get(name="manager")
+	if request.user.is_authenticated() and group in request.user.groups.all():
+		data={'group':group}
+		data['students']=Student.objects.all()
+		return render(request,'students/std_list.html',data)
+	else:
+		return HttpResponseRedirect("/student/manager")
+
+def update_password(request):
+	group=Group.objects.get(name="manager")
+	if request.user.is_authenticated() and group in request.user.groups.all():
+		data={'group':group}
+		if request.method=='POST':
+			form=PasswordUpdateForm(request.POST)
+			if form.is_valid():
+				request.user.set_password(form.cleaned_data['password1'])
+				request.user.save()
+				logout(request)
+				return HttpResponseRedirect("/student/manager")
+		else:
+			form=PasswordUpdateForm()
+		data['form']=form
+		return render(request,'students/update_password.html',data)
+	else:
+		return HttpResponseRedirect("/student/manager")
+		
+def gen_token(request):
+	group=Group.objects.get(name="manager")
+	if request.user.is_authenticated() and group in request.user.groups.all():
+		data={'group':group}
 		if request.method=='POST':
 			token_form=TokenForm(request.POST)
 			if token_form.is_valid():
 				name=token_form.cleaned_data['name']
 				token=token_form.save(commit=False)
+				token.by=request.user
 				save=False
 				while(not save):
 					try:
@@ -116,19 +197,18 @@ def manager_panel(request):
 				data['token']=token
 				data['token_form']=TokenForm()
 		else:
-			data['students']=Student.objects.all()
 			data['token_form']=TokenForm()
-		return render(request,'students/manager_panel.html',data)
+		return render(request,'students/gen_token.html',data)
 	else:
-		return HttpResponseRedirect("/students/manager")
-
+		return HttpResponseRedirect("/student/manager")
+		
 def view_std(request,pk):
 	data={}
 	if request.user.is_authenticated() and Group.objects.get(name="manager") in request.user.groups.all():
 		data['student']=Student.objects.get(pk=pk)
 		return render(request,'students/view_std.html',data)
 	else:
-		return HttpResponseRedirect("/students/manager")
+		return HttpResponseRedirect("/student/manager")
 
 def manager_login(request):
 	if request.user.is_authenticated() and Group.objects.get(name="manager") in request.user.groups.all():
@@ -142,11 +222,14 @@ def manager_login(request):
 			username=request.POST['username']
 			password=request.POST['password']
 			user=authenticate(username=username, password=password)
-			if user is not None and Group.objects.get(name="manager") in user.groups.all():
-				login(request, user)
-				return HttpResponseRedirect("manager-panel/")
+			if user is not None:
+				if Group.objects.get(name="manager") in user.groups.all():
+					login(request, user)
+					return HttpResponseRedirect("manager-panel/")
+				else:
+					msg='No such manager'
 			else:
-				msg='No such manager'
+				msg='Incorrect Username or Password'
 		data['form']=form
 		if msg:
 			data['msg']=msg

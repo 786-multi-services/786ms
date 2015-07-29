@@ -1,7 +1,9 @@
 from django.db import models
 import random
 from django.contrib.auth.models import User
-
+from datetime import datetime
+import os
+from django.conf import settings
 
 def get_token():
 	return ''.join([random.choice('0123456789ABCDEF') for x in range(8)])
@@ -9,8 +11,10 @@ def get_token():
 class StudentToken(models.Model):
 	name=models.CharField(max_length=100)
 	token=models.CharField(default=get_token(),editable=False,unique=True,max_length=8)
+	datetime=models.DateTimeField(default=datetime.now,editable=False)
+	by=models.ForeignKey(User)
 	def __str__(self):
-		return self.name+','+str(self.token)
+		return self.name+', '+str(self.token)+", "+str(self.datetime)
 
 class Course(models.Model):
 	name=models.CharField(max_length=100)
