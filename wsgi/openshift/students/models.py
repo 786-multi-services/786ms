@@ -56,9 +56,32 @@ class Student(models.Model):
 	
 	def __str__(self):
 		return self.user.get_full_name()
+	
 	@property
 	def get_photo_url(self):
 		return '/'.join(self.photo.url.split("/")[-3:])
+	
 	@get_photo_url.setter
 	def get_photo_url(self, value):
 		self.__get_photo_url = value
+	
+	def get_img_tag(self):
+		return '<img src="%s" width="150">' % self.photo.url
+	get_img_tag.short_description = 'Image'
+	get_img_tag.allow_tags = True
+	
+	def get_name(self):
+		return self.user.get_full_name()
+	get_name.short_description = 'Name'
+	get_name.allow_tags = True
+	
+	def get_email(self):
+		return self.user.email
+	get_email.short_description = 'Email'
+	get_email.allow_tags = True
+	
+	def get_username(self):
+		return self.user.username
+	get_username.short_description = 'Username'
+	get_username.allow_tags = True
+	
