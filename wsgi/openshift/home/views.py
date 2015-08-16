@@ -2,8 +2,7 @@ from django.shortcuts import render
 from django.core.exceptions import ObjectDoesNotExist
 from django.http import HttpResponseRedirect
 from django.utils import timezone
-from home.models import User,Message
-
+from .models import *
 from .forms import ContactForm
 
 def index(request,tag='home'):
@@ -14,6 +13,12 @@ def index(request,tag='home'):
 	'sarfaraz_tw':'https://twitter.com/shaibzada',
 	'daakhan_fb':'https://www.facebook.com/profile.php?id=100006601905636',
 	'daakhan_tw':'#',
+	'news_list': Object.objects.filter(object_type=OBJECT_NEWS).order_by('time'),
+	'programme_list': Object.objects.filter(object_type=OBJECT_PROGRAMME).order_by('time'),
+	'today':datetime.date.today(),
+	'travel_services':Service.objects.filter(service_type=SERVICE_TRAVEL),
+	'application_services':Service.objects.filter(service_type=SERVICE_APPLICATION),
+	'recharge_services':Service.objects.filter(service_type=SERVICE_RECHARGE),
 	}
 	if request.method=='POST':
 		form=ContactForm(request.POST)

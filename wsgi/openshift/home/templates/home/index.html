@@ -17,7 +17,30 @@
 {% endblock%}
 {% block body_block %}
 	<div class="container">
-		
+		<div class="row section" id="home">
+			<div class="container">
+				<div class="col-sm-6">
+					<h4 class="heading">News</h4>
+					<marquee direction="up" class="news-marquee" scrollamount=2>
+						<ul class="news-list">
+						{%for news in news_list %}
+							<li class="news-element">{{news.content}} {%ifequal news.time.month today.month %}<span class="label label-danger">New</span>{%endifequal%}</li>
+						{%endfor%}
+						</ul>
+					</marquee>
+				</div>
+				<div class="col-sm-6">
+					<h4 class="heading">Programmes</h4>
+					<marquee direction="down" class="programme-marquee" scrollamount=2>
+						<ul class="programme-list">
+						{%for programme in programme_list %}
+							<li class="programme-element">{{programme.content}} {%ifequal programme.time.month today.month %}<span class="label label-danger">New</span>{%endifequal%}</li>
+						{%endfor%}
+						</ul>
+					</marquee>
+				</div>
+			</div>
+		</div>
 		<div class="row section" id="services">
 		<h4 class="heading">Services</h4>
 		<div class="container">
@@ -33,6 +56,11 @@
 							<i class="fa fa-train fa-lg"></i> <i class="fa fa-plane fa-lg"></i> <i class="fa fa-bus fa-lg"></i> <i class="fa fa-taxi fa-lg"></i>
 						</div>
 					</div>
+					<ul class="service-list">
+						{%for service in travel_services%}
+						<li><i class="fa fa-check"></i> {{service.name}}</li>
+						{%endfor%}
+					</ul>
 				</div>
 				<div class="col-sm-4">
 					<div class="shadow circle">
@@ -45,6 +73,11 @@
 							<i class="fa fa-institution fa-lg"></i> <i class="fa fa-graduation-cap fa-lg"></i> <i class="fa fa-file-text-o fa-lg"></i> <i class="fa fa-print fa-lg"></i>
 						</div>
 					</div>
+					<ul class="service-list">
+						{%for service in application_services%}
+						<li><i class="fa fa-check"></i> {{service.name}}</li>
+						{%endfor%}
+					</ul>
 				</div>
 				<div class="col-sm-4">
 					<div class="shadow circle">
@@ -57,10 +90,15 @@
 							<i class="fa fa-credit-card fa-lg"></i> <i class="fa fa-mobile fa-lg"></i> <i class="fa fa-tablet fa-lg"></i>
 						</div>
 					</div>
+					<ul class="service-list">
+						{%for service in recharge_services%}
+						<li><i class="fa fa-check"></i> {{service.name}}</li>
+						{%endfor%}
+					</ul>
 				</div>
-			</div>		
+			</div>
 		</div>
-		</div>
+		
 		<div class="row section" id="career">
 		<h4 class="heading">Career</h4>
 		<div class="container">
