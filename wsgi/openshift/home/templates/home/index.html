@@ -21,7 +21,7 @@
 			<div class="container">
 				<div class="col-sm-6">
 					<h4 class="heading">News</h4>
-					<marquee direction="up" class="news-marquee" scrollamount=2>
+					<marquee direction="up" class="news-marquee" scrollamount=2 onmouseover="this.stop();" onmouseout="this.start();">
 						<ul class="news-list">
 						{%for news in news_list %}
 							<li class="news-element">{{news.content}} {%ifequal news.time.month today.month %}<span class="label label-danger">New</span>{%endifequal%}</li>
@@ -31,7 +31,7 @@
 				</div>
 				<div class="col-sm-6">
 					<h4 class="heading">Programmes</h4>
-					<marquee direction="down" class="programme-marquee" scrollamount=2>
+					<marquee direction="down" class="programme-marquee" scrollamount=2 onmouseover="this.stop();" onmouseout="this.start();">
 						<ul class="programme-list">
 						{%for programme in programme_list %}
 							<li class="programme-element">{{programme.content}} {%ifequal programme.time.month today.month %}<span class="label label-danger">New</span>{%endifequal%}</li>

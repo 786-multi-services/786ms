@@ -1,2 +1,11 @@
+marquee {
+  border: 1px dashed #999;
+  border-radius: 15px; }
+  marquee ul li {
+    margin-bottom: 10px; }
 
+.programme-marquee ul li {
+  padding-bottom: 10px;
+  border-bottom: 1px dashed #999; }
 
+/*# sourceMappingURL=home_main.css.map */
