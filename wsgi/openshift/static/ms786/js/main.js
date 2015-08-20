@@ -33,13 +33,17 @@ $(document).ready(function () {
 		var scrollPosition = $(document).scrollTop();
 		$('a').each(function () {
 			var currentLink = $(this);
-			var refElement = $(currentLink.attr("href"));
-			if (refElement.position().top <= scrollPosition && refElement.position().top + refElement.height() > scrollPosition) {
-				$('nav ul li a').removeClass("active");
-				currentLink.addClass("active");
+			try{
+				var refElement = $(currentLink.attr("href"));
+				if (refElement.position().top <= scrollPosition && refElement.position().top + refElement.height() > scrollPosition) {
+					$('nav ul li a').removeClass("active");
+					currentLink.addClass("active");
+				}
+				else{
+					currentLink.removeClass("active");
+				}
 			}
-			else{
-				currentLink.removeClass("active");
+			catch(e){
 			}
 		});
 	}
