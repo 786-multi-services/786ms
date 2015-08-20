@@ -5,6 +5,19 @@ from django.utils import timezone
 from .models import *
 from .forms import ContactForm
 
+def handler404(request):
+	return render(request,'error.html',{'heading':'Error 404','content':'Requested URL '+request.build_absolute_uri()+' not found'})
+
+def handler500(request):
+	return render(request,'error.html',{'heading':'Error 500','content':'Internal server error.'})
+
+def handler403(request):
+	return render(request,'error.html',{'heading':'Error 403','content':'permission denied.'})
+
+def handler400(request):
+	return render(request,'error.html',{'heading':'Error 400','content':'Bad request.'})
+
+
 def index(request,tag='home'):
 	return_data={'active_nav_link':tag,'title':'786 Multi Services','is_index':True,
 	'zeeshan_fb':'https://www.facebook.com/zeeshankhan.1001',
