@@ -42,63 +42,63 @@
 			</div>
 		</div>
 		<div class="row section" id="services">
-		<h4 class="heading">Services</h4>
-		<div class="container">
-			<div class="row">
-				<div class="col-sm-4 ">
-					<div class="shadow circle">
+			<h4 class="heading">Services</h4>
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-4 ">
+						<div class="shadow circle">
 						
-						<svg  height="160" width="160">
-							<circle cx="80" cy="80" r="70" stroke="#f67280" stroke-width="2" style="fill:white" />
-						</svg>
-						<div class="circle-text"><br>
-							<p>Travel Services</p>
-							<i class="fa fa-train fa-lg"></i> <i class="fa fa-plane fa-lg"></i> <i class="fa fa-bus fa-lg"></i> <i class="fa fa-taxi fa-lg"></i>
+							<svg  height="160" width="160">
+								<circle cx="80" cy="80" r="70" stroke="#f67280" stroke-width="2" style="fill:white" />
+							</svg>
+							<div class="circle-text"><br>
+								<p>Travel Services</p>
+								<i class="fa fa-train fa-lg"></i> <i class="fa fa-plane fa-lg"></i> <i class="fa fa-bus fa-lg"></i> <i class="fa fa-taxi fa-lg"></i>
+							</div>
 						</div>
+						<ul class="service-list">
+							{%for service in travel_services%}
+							<li><i class="fa fa-check"></i> {{service.name}}</li>
+							{%endfor%}
+						</ul>
 					</div>
-					<ul class="service-list">
-						{%for service in travel_services%}
-						<li><i class="fa fa-check"></i> {{service.name}}</li>
-						{%endfor%}
-					</ul>
-				</div>
-				<div class="col-sm-4">
-					<div class="shadow circle">
+					<div class="col-sm-4">
+						<div class="shadow circle">
 						
-						<svg  height="160" width="160">
-							<circle cx="80" cy="80" r="70" stroke="#f67280" stroke-width="2" style="fill:white" />
-						</svg>
-						<div class="circle-text"><br>
-							<p>Application Services</p>
-							<i class="fa fa-institution fa-lg"></i> <i class="fa fa-graduation-cap fa-lg"></i> <i class="fa fa-file-text-o fa-lg"></i> <i class="fa fa-print fa-lg"></i>
+							<svg  height="160" width="160">
+								<circle cx="80" cy="80" r="70" stroke="#f67280" stroke-width="2" style="fill:white" />
+							</svg>
+							<div class="circle-text"><br>
+								<p>Application Services</p>
+								<i class="fa fa-institution fa-lg"></i> <i class="fa fa-graduation-cap fa-lg"></i> <i class="fa fa-file-text-o fa-lg"></i> <i class="fa fa-print fa-lg"></i>
+							</div>
 						</div>
+						<ul class="service-list">
+							{%for service in application_services%}
+							<li><i class="fa fa-check"></i> {{service.name}}</li>
+							{%endfor%}
+						</ul>
 					</div>
-					<ul class="service-list">
-						{%for service in application_services%}
-						<li><i class="fa fa-check"></i> {{service.name}}</li>
-						{%endfor%}
-					</ul>
-				</div>
-				<div class="col-sm-4">
-					<div class="shadow circle">
+					<div class="col-sm-4">
+						<div class="shadow circle">
 						
-						<svg  height="160" width="160">
-							<circle cx="80" cy="80" r="70" stroke="#f67280" stroke-width="2" style="fill:white" />
-						</svg>
-						<div class="circle-text"><br>
-							<p>Recharge Services</p>
-							<i class="fa fa-credit-card fa-lg"></i> <i class="fa fa-mobile fa-lg"></i> <i class="fa fa-tablet fa-lg"></i>
+							<svg  height="160" width="160">
+								<circle cx="80" cy="80" r="70" stroke="#f67280" stroke-width="2" style="fill:white" />
+							</svg>
+							<div class="circle-text"><br>
+								<p>Recharge Services</p>
+								<i class="fa fa-credit-card fa-lg"></i> <i class="fa fa-mobile fa-lg"></i> <i class="fa fa-tablet fa-lg"></i>
+							</div>
 						</div>
+						<ul class="service-list">
+							{%for service in recharge_services%}
+							<li><i class="fa fa-check"></i> {{service.name}}</li>
+							{%endfor%}
+						</ul>
 					</div>
-					<ul class="service-list">
-						{%for service in recharge_services%}
-						<li><i class="fa fa-check"></i> {{service.name}}</li>
-						{%endfor%}
-					</ul>
 				</div>
 			</div>
 		</div>
-		
 		<div class="row section" id="career">
 		<h4 class="heading">Career</h4>
 		<div class="container">
