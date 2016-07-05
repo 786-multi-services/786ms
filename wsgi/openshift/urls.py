@@ -14,5 +14,7 @@ urlpatterns = patterns('',
 	url(r'^',include('home.urls')),
 	url(r'^career/',include('career.urls')),
     url(r'^student/',include('students.urls')),
+	url(r'^shops/', include('shops.urls')),
     url(r'^admin/', include(admin.site.urls)),
+
 ) + static(settings.MEDIA_ROOT, document_root=settings.MEDIA_URL)

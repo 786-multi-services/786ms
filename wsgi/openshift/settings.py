@@ -58,6 +58,7 @@ INSTALLED_APPS = (
     'career',
     'home',
     'students',
+    'shops',
 )
 
 MIDDLEWARE_CLASSES = (

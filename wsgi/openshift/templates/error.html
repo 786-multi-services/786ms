@@ -1,13 +1,14 @@
 {%extends 'base.html' %}
-					
-
-{% block js_include%}{% endblock%}
-	
+{% block js_include%}
+{% endblock%}
 {% block body_block%}
-	<div class="section">
-		<h3 class="heading">{{heading}}</h3>
-		<div class="container">
+<div class="section">
+	<h3 class="heading">{{heading}}</h3>
+	<div class="container">
+		<div class="alert alert-danger">
 			<p>{{content}}</p>
+			<p>{{error}}</p>
 		</div>
 	</div>
+</div>
 {% endblock %}

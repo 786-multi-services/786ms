@@ -152,11 +152,11 @@ ul>li{
 .navbar-brand {
   font-size:17px;
   font-weight:700;
-  
+
 }
 .active{
 	color:#f67280;
-} 
+}
 .navbar-default .navbar-brand:focus, .navbar-default .navbar-brand:hover{
 	color:#f67280;
 }
@@ -236,7 +236,7 @@ ul>li{
 }
 .section {
   padding-bottom: 40px;
-  border-bottom: 1px solid #eee;  
+  border-bottom: 1px solid #eee;
 }
 #wrap{
 	min-height:100%;
@@ -246,13 +246,13 @@ ul>li{
 }
 #push{
 	height: 60px;
-} 
+}
 #footer {
 	font-size:11px;
 	line-height:30px;
 	margin-top:40px;
 	padding:40px 0 60px 0;
-	background-color: #eee;
+	background-color: #263238;
 	color:#9a9a9a;
 }
 .footer-social-row{
@@ -267,7 +267,7 @@ ul>li{
 	text-align:center;
 	border-radius: 3px;
 }
-  /* Lastly, apply responsive CSS fixes as necessary */ 
+  /* Lastly, apply responsive CSS fixes as necessary */
 @media(max-width: 767px) {
 	#footer {
 		margin-right:0;
@@ -281,7 +281,7 @@ h1>small{
 	margin-bottom:20px;
 }
 .form-control:active{
-	
+
 }
 textarea:focus,
 input[type="text"]:focus,
@@ -298,7 +298,7 @@ input[type="url"]:focus,
 input[type="search"]:focus,
 input[type="tel"]:focus,
 input[type="color"]:focus,
-.uneditable-input:focus {   
+.uneditable-input:focus {
   border-color: rgba(255, 152, 0, 0.8);
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(255, 152, 0, 0.6);
   outline: 0 none;
@@ -411,8 +411,8 @@ input[type="color"]:focus,
     left: 50%;
     width: 100px;
     height: 100px;
-	-webkit-transform: translate(-50%, -50%);  
-    transform: translate(-50%, -50%); 
+	-webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
     vertical-align:center;
 //	border:1px solid blue;
 }
@@ -420,13 +420,13 @@ input[type="color"]:focus,
 	text-shadow: 0.5px 0.5px #aaa;
 }
 .head{
-	background-color:gray;//url("../images/jumbo_bg.jpg") no-repeat;
+	background-color:#009688;//url("../images/jumbo_bg.jpg") no-repeat;
 	color:white;
 	padding:100px 0 100px 0;
 	text-align:center;
 }
 .errorlist li{
-	color:#f45a6a; 
+	color:#f45a6a;
 }
 .success{
 	color:#4aaaa5;
