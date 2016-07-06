@@ -1,0 +1,27 @@
+{
+  "name": "786ms",
+  "authors": [
+    "Zeeshan Khan <zkhan1093@gmail.com>"
+  ],
+  "description": "website for 786 multi services",
+  "main": "index.html",
+  "keywords": [
+    "786",
+    "multi",
+    "services",
+    "job",
+    "form",
+    "application",
+    "bill",
+    "recharge"
+  ],
+  "license": "MIT",
+  "homepage": "index.html",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

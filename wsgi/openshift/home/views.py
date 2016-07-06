@@ -17,7 +17,8 @@ def handler403(request):
 def handler400(request):
 	return render(request,'error.html',{'heading':'Error 400','content':'Bad request.'})
 
-
+def index(request):
+	return index(request,'home')
 def index(request,tag='home'):
 	return_data={'active_nav_link':tag,'title':'786 Multi Services','is_index':True,
 	'zeeshan_fb':'https://www.facebook.com/zeeshankhan.1001',

@@ -5,19 +5,19 @@
 		{% load staticfiles %}
 		<title>786 Multi Services</title>
 		<!--Font Awesome-->
-		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-		
-		<link rel="stylesheet" href="{% static 'ms786/css/jquery-ui.min.css'%}"/>
-		<link rel="stylesheet" href="{% static 'ms786/css/bootstrap.min.css'%}"/>
-		
+		<link rel="stylesheet" href="{% static 'ms786/font-awesome/css/font-awesome.min.css' %}">
+
+		<link rel="stylesheet" href="{% static 'ms786/jquery/dist/jquery-ui.min.css'%}"/>
+		<link rel="stylesheet" href="{% static 'ms786/bootstrap/dist/css/bootstrap.min.css'%}"/>
+
 		<!--Global css-->
 		<link rel="stylesheet" href="{% static 'ms786/css/main.css'%}"/>
 		<link rel="stylesheet" href="{% static 'ms786/css/main_.css'%}"/>
-		
+
 		<!-- Google Font-->
 		<link href="http://fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet" type="text/css">
 		<link href="http://fonts.googleapis.com/css?family=Karla:400,700" rel="stylesheet" type="text/css">
-		
+
 		{% block head_block%}{% endblock %}
 	</head>
 	<body>
@@ -46,7 +46,7 @@
 						{%endif%}
 					</ul>
 				</div>
-				
+
 			</div>
 		</nav>
 			<div class="head" id="home">
@@ -62,7 +62,7 @@
 				</div>
 			</div>
 			{% block body_block%}
-			{% endblock %}		
+			{% endblock %}
 			<div id="push"></div>
 		</div>
 		<div id="footer">
@@ -72,28 +72,28 @@
 						&copy;2015 786 Mutil Services. All Rights Reserved.
 					</div>
 					<div class="col-xs-6">
-						
+
 							<div class="footer-social-row">
 								<a class="footer-social btn-facebook" href="#"><i class="fa fa-facebook fa-lg"></i></a> <a class="btn-twitter footer-social" href="#"><i class="fa fa-twitter fa-lg"></i></a>
 							</div>
-						
+
 					</div>
 				</div>
 			</div>
 		</div>
-		
+
 		<!-- JQuery -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-		
+
 		<!--Jquery UI-->
 		<script src="{% static 'ms786/js/jquery-ui.min.js' %}"></script>
-		
+
 		<!--Bootstrap-->
 		<script src="{% static 'ms786/js/bootstrap.min.js' %}"></script>
-		
+
 		<!--Custom JQuery/Javascript-->
 		<script src="{% static 'ms786/js/main.js' %}"></script>
-		
+
 		{% block js_include%}{% endblock%}
 	</body>
 </html>
