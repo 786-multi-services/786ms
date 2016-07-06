@@ -11,3 +11,6 @@ venv/
 virtenv/
 dist/
 build/
+wsgi/openshift/*/
+!wsgi/openshift/templates/
+wsgi/openshift/static/components/
