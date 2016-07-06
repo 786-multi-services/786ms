@@ -1,6 +1,5 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
-{% load add_css %}
 {% block head_block%}
 	<!--custom css-->
 	<link rel="stylesheet" href="{% static 'home/css/home_main.css'%}"/>
@@ -47,7 +46,7 @@
 				<div class="row">
 					<div class="col-sm-4 ">
 						<div class="shadow circle">
-						
+
 							<svg  height="160" width="160">
 								<circle cx="80" cy="80" r="70" stroke="#f67280" stroke-width="2" style="fill:white" />
 							</svg>
@@ -64,7 +63,7 @@
 					</div>
 					<div class="col-sm-4">
 						<div class="shadow circle">
-						
+
 							<svg  height="160" width="160">
 								<circle cx="80" cy="80" r="70" stroke="#f67280" stroke-width="2" style="fill:white" />
 							</svg>
@@ -81,7 +80,7 @@
 					</div>
 					<div class="col-sm-4">
 						<div class="shadow circle">
-						
+
 							<svg  height="160" width="160">
 								<circle cx="80" cy="80" r="70" stroke="#f67280" stroke-width="2" style="fill:white" />
 							</svg>
@@ -108,7 +107,7 @@
 				<li>
 					 <a href="/career/trainer"><i class="fa fa-asterisk"></i> Computer Trainer</a> <span class="badge">New</span>
 				</li>
-				
+
 			</ul>
 			</div>
 		</div>
@@ -116,7 +115,7 @@
 		<div class="row section" id="professionals">
 		<h4 class="heading">Meet the professionals</h4>
 		<div class="container">
-		
+
 		<div class="row">
 			<div class="col-sm-4 col-xs-6">
 				<div class="thumbnail">
@@ -129,7 +128,7 @@
 					</div>
 				</div>
 			</div>
-			
+
 			<div class="col-sm-4 col-xs-6">
 				<div class="thumbnail">
 					<img class="contact-img" src="{% static 'home/images/2.png' %}" alt="">
@@ -141,7 +140,7 @@
 					</div>
 				</div>
 			</div>
-			
+
 			<div class="col-sm-4 col-xs-6">
 				<div class="thumbnail">
 					<img class="contact-img" src="{% static 'home/images/zeeshan.jpg' %}" alt="">
@@ -186,8 +185,8 @@
 								{{form.email.errors}}
 							</div>
 							<div class="form-group">
-								<div class="input-group"> 
-									{{form.captcha}}{{form.captcha.errors}}	
+								<div class="input-group">
+									{{form.captcha}}{{form.captcha.errors}}
 								</div>
 							</div>
 						</div>
@@ -200,7 +199,7 @@
 					</div>
 					<div class="row">
 						<div class="col-sm-2 col-sm-offset-5">
-							
+
 						<div class="form-group">
 							<button type="submit" class="btn btn-default" >Submit</button>
 						</div>
@@ -212,5 +211,3 @@
 	</div>
 		</div>
 {% endblock %}
-
-
