@@ -16,8 +16,8 @@ else
     python "$OPENSHIFT_REPO_DIR"wsgi/openshift/manage.py migrate --noinput
 fi
 
-echo "Executing 'bower.py $OPENSHIFT_REPO_DIR/wsgi/openshift/static/ install'"
-bower.py $OPENSHIFT_REPO_DIR/wsgi/openshift/static/ install
+echo "Executing 'python $OPENSHIFT_REPO_DIR/wsgi/openshift/manage.py collectstatic --noinput'"
+python $OPENSHIFT_REPO_DIR/wsgi/openshift/manage.py bower install
 
 echo "Executing 'python $OPENSHIFT_REPO_DIR/wsgi/openshift/manage.py collectstatic --noinput'"
 python "$OPENSHIFT_REPO_DIR"wsgi/openshift/manage.py collectstatic --noinput

@@ -55,6 +55,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'nocaptcha_recaptcha',
+    'djangobower',
     'home',
     # 'career',
     # 'students',
@@ -134,6 +135,9 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
 )
+STATICFILES_FINDERS=[
+    'djangobower.finders.BowerFinder',
+]
 
 if ON_OPENSHIFT:
 	MEDIA_ROOT=os.path.join(os.environ.get('OPENSHIFT_DATA_DIR', ''), 'media')
@@ -144,3 +148,11 @@ else:
 
 NORECAPTCHA_SITE_KEY = '6Ld_lQkTAAAAAIitG4r-YKH_0I_w5W-Q_WG8KzZV'
 NORECAPTCHA_SECRET_KEY = '6Ld_lQkTAAAAAGr4pBnBzL9ZyDOQvbt2ndYj8Klz'
+
+
+BOWER_COMPONENTS_ROOT = os.path.join(BASE_DIR,'static/ms786/components')
+
+BOWER_INSTALLED_APPS = (
+    'jquery',
+    'bootstrap',
+)
