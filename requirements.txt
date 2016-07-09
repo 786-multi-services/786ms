@@ -1,3 +1,2 @@
 django-nocaptcha-recaptcha
 pillow>=2.8.0
-django-bower
