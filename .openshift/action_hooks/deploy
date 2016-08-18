@@ -29,3 +29,11 @@ if [ ! -d $OPENSHIFT_DATA_DIR/media ]; then
 fi
 
 ln -sf $OPENSHIFT_DATA_DIR/media $OPENSHIFT_REPO_DIR/wsgi/static/media
+
+echo "adding runtime to home path"
+HOME=$HOME/app-root/runtime
+cd ~/repo
+echo "npm install bower"
+npm install bower
+echo "./node_modules/.bin/bower list"
+./node_modules/.bin/bower list
