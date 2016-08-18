@@ -38,7 +38,7 @@ if ON_OPENSHIFT:
 else:
      DEBUG = True
 
-TEMPLATE_DEBUG = DEBUG
+# TEMPLATE_DEBUG = DEBUG
 
 if DEBUG:
      ALLOWED_HOSTS = []
@@ -91,11 +91,21 @@ if 'REDISCLOUD_URL' in os.environ and 'REDISCLOUD_PORT' in os.environ and 'REDIS
 ROOT_URLCONF = 'urls'
 
 WSGI_APPLICATION = 'wsgi.application'
-
-TEMPLATE_DIRS = (
-     os.path.join(BASE_DIR,'templates'),
-)
-
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
+            ],
+        },
+    },
+]
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
 if ON_OPENSHIFT:
