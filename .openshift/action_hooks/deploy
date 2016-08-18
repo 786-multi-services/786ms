@@ -3,16 +3,6 @@
 # build hook has been run but before the application has been started back
 # up again.  This script gets executed directly, so it could be python, php,
 # ruby, etc.
-echo "adding runtime to home path"
-HOME=$HOME/app-root/runtime
-cd ~/repo
-echo "sudo apt-get install nodejs"
-sudo apt-get install nodejs
-echo "npm install bower"
-npm install bower
-echo "./node_modules/.bin/bower list"
-./node_modules/.bin/bower list
-
 source $OPENSHIFT_HOMEDIR/python/virtenv/bin/activate
 
 if [ ! -f $OPENSHIFT_DATA_DIR/db.sqlite3 ]
