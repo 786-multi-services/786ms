@@ -14,4 +14,3 @@ build/
 wsgi/openshift/students/
 wsgi/openshift/shops/
 wsgi/openshift/career/
-wsgi/openshift/static/ms786/components/
