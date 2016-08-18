@@ -23,7 +23,6 @@
     "bower_components",
     "test",
     "tests",
-    "ms786/components"
   ],
   "dependencies": {
     "font-awesome": "^4.6.3",
