@@ -2,6 +2,7 @@ from django.conf.urls import  include, url
 from django.conf.urls.static import static
 from django.conf import settings
 from django.contrib import admin
+
 admin.autodiscover()
 
 
@@ -12,8 +13,8 @@ handler400 = 'home.views.handler400'
 
 urlpatterns = [
 	url(r'',include('home.urls')),
-	 url(r'career/',include('career.urls')),
-     url(r'student/',include('students.urls')),
-	 url(r'shops/', include('shops.urls')),
+	 url(r'career/',include('786ms_career.urls')),
+     url(r'student/',include('786ms_students.urls')),
+	 url(r'shops/', include('786ms_shops.urls')),
     url(r'^admin/', admin.site.urls),
 ] + static(settings.MEDIA_ROOT, document_root=settings.MEDIA_URL)

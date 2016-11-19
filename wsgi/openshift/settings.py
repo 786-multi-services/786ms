@@ -56,9 +56,9 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'nocaptcha_recaptcha',
     'home',
-    'career',
-    'students',
-    'shops',
+    '786ms_career',
+    '786ms_students',
+    '786ms_shops',
 )
 
 MIDDLEWARE_CLASSES = (

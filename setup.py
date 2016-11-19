@@ -3,7 +3,7 @@ from setuptools import setup
 import os
 
 # Put here required packages
-packages = ['Django>=1.10.3','django-nocaptcha_recaptcha','pillow',]
+packages = ['Django>=1.10.3','django-nocaptcha_recaptcha','pillow','django-786ms_career==0.2.3']
 
 if 'REDISCLOUD_URL' in os.environ and 'REDISCLOUD_PORT' in os.environ and 'REDISCLOUD_PASSWORD' in os.environ:
      packages.append('django-redis-cache')
