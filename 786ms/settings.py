@@ -31,7 +31,10 @@ SECRET_KEY = use_keys['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
 if ON_PRODUCTION:
-     DEBUG = False
+    if os.environ.has_key('DEBUG'):
+		DEBUG = os.environ['DEBUG']
+	else:
+		DEBUG = False
 else:
      DEBUG = True
 
