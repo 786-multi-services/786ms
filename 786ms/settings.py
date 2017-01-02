@@ -41,7 +41,7 @@ else:
 # TEMPLATE_DEBUG = DEBUG
 
 if DEBUG:
-     ALLOWED_HOSTS = ['multi-services-786.herokuapp.com']
+     ALLOWED_HOSTS = ['multi-services-786.herokuapp.com','localhost']
 else:
      ALLOWED_HOSTS = ['*']
 
