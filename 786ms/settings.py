@@ -88,9 +88,9 @@ if 'REDISCLOUD_URL' in os.environ and 'REDISCLOUD_PORT' in os.environ and 'REDIS
     }
     MIDDLEWARE_CLASSES = ('django.middleware.cache.UpdateCacheMiddleware',) + MIDDLEWARE_CLASSES + ('django.middleware.cache.FetchFromCacheMiddleware',)
 
-ROOT_URLCONF = 'urls'
+ROOT_URLCONF = '786ms.urls'
 
-WSGI_APPLICATION = 'wsgi.application'
+WSGI_APPLICATION = '786ms.wsgi.application'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',

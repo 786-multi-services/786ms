@@ -14,5 +14,5 @@ build/
 wsgi/openshift/django-786ms_students/
 wsgi/openshift/django-786ms_shops/
 wsgi/openshift/django-786ms_career/
-static/components/
+786ms/static/components/
 db.sqlite3
