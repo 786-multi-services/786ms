@@ -1,3 +1,8 @@
 django
 django-nocaptcha-recaptcha
 pillow>=2.8.0
+virtualenv==15.1.0
+dj-database-url==0.4.1
+gunicorn==19.6.0
+psycopg2==2.6.1
+whitenoise==2.0.6

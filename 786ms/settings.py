@@ -11,9 +11,9 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 import os
 import imp
 
-ON_OPENSHIFT = False
-if os.environ.has_key('OPENSHIFT_REPO_DIR'):
-     ON_OPENSHIFT = True
+ON_PRODUCTION = False
+if os.environ.has_key('ON_HEROKU'):
+     ON_PRODUCTION = True
 
 BASE_DIR = os.path.dirname(os.path.realpath(__file__))
 
@@ -25,15 +25,11 @@ BASE_DIR = os.path.dirname(os.path.realpath(__file__))
 
 default_keys = { 'SECRET_KEY': 'vm4rl5*ymb@2&d_(gc$gb-^twq9w(u69hi--%$5xrh!xk(t%hw' }
 use_keys = default_keys
-if ON_OPENSHIFT:
-     imp.find_module('openshiftlibs')
-     import openshiftlibs
-     use_keys = openshiftlibs.openshift_secure(default_keys)
 
 SECRET_KEY = use_keys['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-if ON_OPENSHIFT:
+if ON_PRODUCTION:
      DEBUG = False
 else:
      DEBUG = True
@@ -113,20 +109,18 @@ TEMPLATES = [
 ]
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
-if ON_OPENSHIFT:
-     DATABASES = {
-         'default': {
-             'ENGINE': 'django.db.backends.sqlite3',
-             'NAME': os.path.join(os.environ['OPENSHIFT_DATA_DIR'], 'db.sqlite3'),
-         }
-     }
-else:
-     DATABASES = {
-         'default': {
-             'ENGINE': 'django.db.backends.sqlite3',
-             'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-         }
-    }
+
+DATABASES = {
+	 'default': {
+		 'ENGINE': 'django.db.backends.sqlite3',
+		 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+	 }
+}
+if ON_PRODUCTION:
+	db_from_env = dj_database_url.config(conn_max_age=500)
+	DATABASES['default'].update(db_from_env)
+
+# Update database configuration with $DATABASE_URL.
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
@@ -150,7 +144,7 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
 )
 
-if ON_OPENSHIFT:
+if ON_PRODUCTION:
 	MEDIA_ROOT=os.path.join(os.environ.get('OPENSHIFT_DATA_DIR', ''), 'media')
 	MEDIA_URL="/media/"
 else:
@@ -158,4 +152,6 @@ else:
 	MEDIA_URL="/home/zeeshan/Desktop/Websites/openshift/786ms/wsgi/openshift/media/"
 
 NORECAPTCHA_SITE_KEY = '6Ld_lQkTAAAAAIitG4r-YKH_0I_w5W-Q_WG8KzZV'
-NORECAPTCHA_SECRET_KEY = '6Ld_lQkTAAAAAGr4pBnBzL9ZyDOQvbt2ndYj8Klz'
+NORECAPTCHA_SECRET_KEY = ''
+if ON_PRODUCTION:
+	NORECAPTCHA_SECRET_KEY=os.environ.has_key('NORECAPTCHA_SECRET_KEY')
