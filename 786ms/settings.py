@@ -14,7 +14,7 @@ import dj_database_url
 
 ON_PRODUCTION = False
 if os.environ.has_key('ON_HEROKU'):
-     ON_PRODUCTION = True
+    ON_PRODUCTION = True
 
 BASE_DIR = os.path.dirname(os.path.realpath(__file__))
 
@@ -32,9 +32,9 @@ SECRET_KEY = use_keys['SECRET_KEY']
 # SECURITY WARNING: don't run with debug turned on in production!
 if ON_PRODUCTION:
     if os.environ.has_key('DEBUG'):
-		DEBUG = os.environ['DEBUG']
-	else:
-		DEBUG = False
+        DEBUG = os.environ['DEBUG']
+    else:
+        DEBUG = False
 else:
      DEBUG = True
 
@@ -95,8 +95,8 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-		 os.path.join(BASE_DIR,'templates')
-		],
+         os.path.join(BASE_DIR,'templates')
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -115,14 +115,14 @@ TEMPLATES = [
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
 
 DATABASES = {
-	 'default': {
-		 'ENGINE': 'django.db.backends.sqlite3',
-		 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-	 }
+     'default': {
+         'ENGINE': 'django.db.backends.sqlite3',
+         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+     }
 }
 if ON_PRODUCTION:
-	db_from_env = dj_database_url.config(conn_max_age=500)
-	DATABASES['default'].update(db_from_env)
+    db_from_env = dj_database_url.config(conn_max_age=500)
+    DATABASES['default'].update(db_from_env)
 
 # Update database configuration with $DATABASE_URL.
 
@@ -149,13 +149,13 @@ STATICFILES_DIRS = (
 )
 
 if ON_PRODUCTION:
-	MEDIA_ROOT=os.path.join(os.environ.get('OPENSHIFT_DATA_DIR', ''), 'media')
-	MEDIA_URL="/media/"
+    MEDIA_ROOT=os.path.join(os.environ.get('OPENSHIFT_DATA_DIR', ''), 'media')
+    MEDIA_URL="/media/"
 else:
-	MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-	MEDIA_URL="/home/zeeshan/Desktop/Websites/openshift/786ms/wsgi/openshift/media/"
+    MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+    MEDIA_URL="/home/zeeshan/Desktop/Websites/openshift/786ms/wsgi/openshift/media/"
 
 NORECAPTCHA_SITE_KEY = '6Ld_lQkTAAAAAIitG4r-YKH_0I_w5W-Q_WG8KzZV'
 NORECAPTCHA_SECRET_KEY = ''
 if ON_PRODUCTION:
-	NORECAPTCHA_SECRET_KEY=os.environ.has_key('NORECAPTCHA_SECRET_KEY')
+    NORECAPTCHA_SECRET_KEY=os.environ.has_key('NORECAPTCHA_SECRET_KEY')
