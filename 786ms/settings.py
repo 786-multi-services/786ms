@@ -10,6 +10,7 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 import imp
+import dj_database_url
 
 ON_PRODUCTION = False
 if os.environ.has_key('ON_HEROKU'):
