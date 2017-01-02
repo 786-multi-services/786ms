@@ -5,14 +5,14 @@
 		{% load staticfiles %}
 		<title>786 Multi Services</title>
 		<!--Font Awesome-->
-		<link rel="stylesheet" href="{% static 'ms786/components/font-awesome/css/font-awesome.min.css' %}">
+		<link rel="stylesheet" href="{% static 'components/font-awesome/css/font-awesome.min.css' %}">
 
-		<link rel="stylesheet" href="{% static 'ms786/components/jquery/dist/jquery-ui.min.css'%}"/>
-		<link rel="stylesheet" href="{% static 'ms786/components/bootstrap/dist/css/bootstrap.min.css'%}"/>
+		<link rel="stylesheet" href="{% static 'components/jquery/dist/jquery-ui.min.css'%}"/>
+		<link rel="stylesheet" href="{% static 'components/bootstrap/dist/css/bootstrap.min.css'%}"/>
 
 		<!--Global css-->
-		<link rel="stylesheet" href="{% static 'ms786/css/main.css'%}"/>
-		<link rel="stylesheet" href="{% static 'ms786/css/main_.css'%}"/>
+		<link rel="stylesheet" href="{% static 'css/main.css'%}"/>
+		<link rel="stylesheet" href="{% static 'css/main_.css'%}"/>
 
 		<!-- Google Font-->
 		<link href="http://fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet" type="text/css">
@@ -83,16 +83,16 @@
 		</div>
 
 		<!-- JQuery -->
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+		<script src="{% static 'components/jquery/dist/jquery.min.js'%}"></script>
 
 		<!--Jquery UI-->
-		<script src="{% static 'ms786/js/jquery-ui.min.js' %}"></script>
+		<script src="{% static 'components/jquery-ui/jquery-ui.min.js' %}"></script>
 
 		<!--Bootstrap-->
-		<script src="{% static 'ms786/js/bootstrap.min.js' %}"></script>
+		<script src="{% static 'components/bootstrap/dist/js/bootstrap.min.js' %}"></script>
 
 		<!--Custom JQuery/Javascript-->
-		<script src="{% static 'ms786/js/main.js' %}"></script>
+		<script src="{% static 'js/main.js' %}"></script>
 
 		{% block js_include%}{% endblock%}
 	</body>

@@ -1,6 +1,3 @@
 django
 django-nocaptcha-recaptcha
 pillow>=2.8.0
-django-786ms_shops
-django-786ms_students
-django-786ms_career

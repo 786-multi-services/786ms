@@ -22,10 +22,11 @@
     "node_modules",
     "bower_components",
     "test",
-    "tests",
+    "tests"
   ],
   "dependencies": {
     "font-awesome": "^4.6.3",
-    "bootstrap": "^3.3.6"
+    "bootstrap": "^3.3.6",
+    "jquery-ui": "^1.12.1"
   }
 }
