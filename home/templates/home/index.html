@@ -1,213 +1,222 @@
-{% extends 'base.html' %}
-{% load staticfiles %}
-{% block head_block%}
-	<!--custom css-->
-	<link rel="stylesheet" href="{% static 'home/css/home_main.css'%}"/>
-{% endblock %}
-{% block body_head_title%}
-				<h1 class="heading col-xs-8 col-xs-offset-2">786 Multi Services<br>
-				<small >Illia Road, Chandauli, U.P, India</small></h1>
-{% endblock%}
-{% block body_head_content %}
-				<h4>We have all the services you need.</h4>
-{% endblock%}
-{%block js_include%}
-		<script src='https://www.google.com/recaptcha/api.js'></script>
-{% endblock%}
-{% block body_block %}
-	<div class="container">
-		<div class="row section" id="home">
-			<div class="container">
-				<div class="col-sm-6">
-					<h4 class="heading">News</h4>
-					<marquee direction="up" class="news-marquee" scrollamount=2 onmouseover="this.stop();" onmouseout="this.start();">
-						<ul class="news-list">
-						{%for news in news_list %}
-							<li class="news-element">{{news.content|safe}} {%ifequal news.time.month today.month %}<span class="label label-danger">New</span>{%endifequal%}</li>
-						{%endfor%}
-						</ul>
-					</marquee>
-				</div>
-				<div class="col-sm-6">
-					<h4 class="heading">Programmes</h4>
-					<marquee direction="down" class="programme-marquee" scrollamount=2 onmouseover="this.stop();" onmouseout="this.start();">
-						<ul class="programme-list">
-						{%for programme in programme_list %}
-							<li class="programme-element">{{programme.content|safe}} {%ifequal programme.time.month today.month %}<span class="label label-danger">New</span>{%endifequal%}</li>
-						{%endfor%}
-						</ul>
-					</marquee>
-				</div>
-			</div>
-		</div>
-		<div class="row section" id="services">
-			<h4 class="heading">Services</h4>
-			<div class="container">
-				<div class="row">
-					<div class="col-sm-4 ">
-						<div class="shadow circle">
+{% extends 'base.html' %} {% load staticfiles %} {% block head_block%}
+<!--custom css-->
+<link rel="stylesheet" href="{% static 'home/css/home_main.css'%}" /> {% endblock %} {% block body_head_title%}
+<!-- <h1 class="heading col-xs-8 col-xs-offset-2">786 Multi Services<br>
+				<small >Illia Road, Chandauli, U.P, India</small></h1>  -->
+{% endblock%} {% block body_head_content %}
+<!-- <h4>We have all the services you need.</h4>  -->
+{% endblock%} {%block js_include%}
+<script src='https://www.google.com/recaptcha/api.js'></script>
+<script>
+	function initMap() {
 
-							<svg  height="160" width="160">
-								<circle cx="80" cy="80" r="70" stroke="#f67280" stroke-width="2" style="fill:white" />
-							</svg>
-							<div class="circle-text"><br>
-								<p>Travel Services</p>
-								<i class="fa fa-train fa-lg"></i> <i class="fa fa-plane fa-lg"></i> <i class="fa fa-bus fa-lg"></i> <i class="fa fa-taxi fa-lg"></i>
-							</div>
+		var uluru = {
+			lat: 25.075124,
+			lng: 83.339709
+		};
+		var map = new google.maps.Map(document.getElementById('map'), {
+			zoom: 9,
+			center: uluru
+		});
+		var marker = new google.maps.Marker({
+			position: uluru,
+			map: map
+		});
+	}
+</script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDGQqJtL1kWp06Qmp0w1SmNDAjPRIUjQKU&callback=initMap">
+</script>
+{% endblock%} {% block body_block %} {% if news_list %}
+<div class="panel panel-default">
+	<div class="container-fluid">
+		<marquee direction="left">
+			{%for news in news_list %} {{news.content|safe}} {%ifequal news.time.month today.month %}<span class="label label-danger">New</span>{% endifequal %} {% if not forloop.last %} | {% endif %} {%endfor%}
+		</marquee>
+	</div>
+</div>
+{% endif %}
+
+<div class="container">
+	<div class="row section" id="services">
+		<br/>
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-sm-4 ">
+					<div class="panel panel-default text-center">
+						<div class="panel-body">
+							<img src="{% static 'home/images/services.png' %}" class="img-responsive center-block" />
+							<h3>Consultancy &amp; Solutions</h3>
+							<p>We provide wide range of services at affordable price. Our services varies from website and Mobile application designing to online application filling.
+								<br/> {% if travel_services %} Following are the common services we currently focused on {% endif %}
+							</p>
+
+							<ul class="service-list">
+								{%for service in travel_services%}
+								<li><i class="fa fa-check"></i> {{service.name}}</li>
+								{%endfor%}
+							</ul>
 						</div>
-						<ul class="service-list">
-							{%for service in travel_services%}
-							<li><i class="fa fa-check"></i> {{service.name}}</li>
-							{%endfor%}
-						</ul>
 					</div>
-					<div class="col-sm-4">
-						<div class="shadow circle">
-
-							<svg  height="160" width="160">
-								<circle cx="80" cy="80" r="70" stroke="#f67280" stroke-width="2" style="fill:white" />
-							</svg>
-							<div class="circle-text"><br>
-								<p>Application Services</p>
-								<i class="fa fa-institution fa-lg"></i> <i class="fa fa-graduation-cap fa-lg"></i> <i class="fa fa-file-text-o fa-lg"></i> <i class="fa fa-print fa-lg"></i>
-							</div>
+				</div>
+				<div class="col-sm-4">
+					<div class="panel panel-default text-center">
+						<div class="panel-body">
+							<img src="{% static 'home/images/internet.png' %}" class="img-responsive center-block" />
+							<h3>Digital Services</h3>
+							<p>We provide wide range of services at affordable price. Our services varies from website and Mobile application designing to online application filling.
+								<br/> {% if application_services %} Following are the common services we currently focused on {% endif %}
+							</p>
+							<ul class="service-list">
+								{%for service in application_services%}
+								<li><i class="fa fa-check"></i> {{service.name}}</li>
+								{%endfor%}
+							</ul>
 						</div>
-						<ul class="service-list">
-							{%for service in application_services%}
-							<li><i class="fa fa-check"></i> {{service.name}}</li>
-							{%endfor%}
-						</ul>
 					</div>
-					<div class="col-sm-4">
-						<div class="shadow circle">
 
-							<svg  height="160" width="160">
-								<circle cx="80" cy="80" r="70" stroke="#f67280" stroke-width="2" style="fill:white" />
-							</svg>
-							<div class="circle-text"><br>
-								<p>Recharge Services</p>
-								<i class="fa fa-credit-card fa-lg"></i> <i class="fa fa-mobile fa-lg"></i> <i class="fa fa-tablet fa-lg"></i>
-							</div>
+				</div>
+				<div class="col-sm-4">
+					<div class="panel panel-default text-center">
+						<div class="panel-body">
+							<img src="{% static 'home/images/travel2.png' %}" class="img-responsive center-block" />
+							<h3>Tour and Travel</h3>
+							<p>We provide wide range of services at affordable price. Our services varies from website and Mobile application designing to online application filling.
+								<br/> {% if recharge_services %} Following are the common services we currently focused on {% endif %}
+							</p>
+							<ul class="service-list">
+								{%for service in recharge_services%}
+								<li><i class="fa fa-check"></i> {{service.name}}</li>
+								{%endfor%}
+							</ul>
 						</div>
-						<ul class="service-list">
-							{%for service in recharge_services%}
-							<li><i class="fa fa-check"></i> {{service.name}}</li>
-							{%endfor%}
-						</ul>
 					</div>
 				</div>
 			</div>
 		</div>
-		<div class="row section" id="career">
-		<h4 class="heading">Career</h4>
+	</div>
+	<div class="row section" id="home">
+		<div class="container">
+			<h4 class="heading">Programmes</h4>
+			{% if programme_list%}
+			<ul class="programme-list">
+				{%for programme in programme_list %}
+				<li class="programme-element">{{programme.content|safe}} {%ifequal programme.time.month today.month %}<span class="label label-danger">New</span>{%endifequal%}</li>
+				{%endfor%}
+			</ul>
+			{% else %}
+			<p>Currently we have no active programmes, however, you can reach us if you want to suggest any programme or want to co-ordinate any. Keep checking we will be adding the programmes shortly</p>
+			{% endif %}
+		</div>
+	</div>
+	<div class="row section" id="career">
+		<h4 class="heading">Career oportunities</h4>
 		<div class="container">
 			<div class="row col-sm-8 col-sm-offset-2">
-			<h4>Current openings</h4>
-			<ul>
-				<li>
-					 <a href="/career/trainer"><i class="fa fa-asterisk"></i> Computer Trainer</a> <span class="badge">New</span>
-				</li>
 
-			</ul>
+				<div class="col-sm-6">
+					<div class="text-center">
+						<img class="img-responsive center-block" src="{% static 'home/images/computer.png' %}" alt="" />
+						<h3>Computer Trainer</h3>
+						<p>We are hiring computer instrutor to teach basic computer to our enrolled students</p>
+						<a class="btn btn-danger btn-lg" href="/career/trainer"><i class="fa fa-send"></i> Apply Now </a>
+						<a class="btn btn-primary btn-lg" href="/career/trainer"><i class="fa fa-book"></i> Read More </a>
+					</div>
+				</div>
 			</div>
 		</div>
-		</div>
-		<div class="row section" id="professionals">
-		<h4 class="heading">Meet the professionals</h4>
+	</div>
+	<div class="row section" id="professionals">
+		<h4 class="heading">Know Us</h4>
 		<div class="container">
 
-		<div class="row">
-			<div class="col-sm-4 col-xs-6">
-				<div class="thumbnail">
-					<img class="contact-img" src="{% static 'home/images/1.png' %}" alt="">
-					<div >
-						<h5 class="team-name">Diwan Akhlak Ahmed Khan <small>Managing Director</small></h5>
-						<p>Owner and Managing Director of 786 Multi services</p>
-						<a href="{{daakhan_fb}}" class="btn btn-contacts btn-facebook" target="_blank"><i class="fa fa-facebook"></i></a>
-						<a href="{{daakhan_tw}}" class="btn btn-contacts btn-twitter" target="_blank"><i class="fa fa-twitter"></i></a>
+			<div class="row">
+				<div class="col-sm-4 col-xs-6">
+					<div class="thumbnail">
+						<img class=" img-thumbnail img-circle img-responsive" src="{% static 'home/images/user.png' %}" alt="" />
+						<div class="caption">
+							<h3 class="team-name">Diwan Khan <small>Founder &amp; Director</small></h3>
+							<p>Founder of 786 Multi services and co-founder of Baangee Club NGO, his ideas and will to improve the neighbourhood has lead this organisation to new peeks</p>
+							<a href="{{daakhan_fb}}" class="btn btn-contacts btn-facebook" target="_blank"><i class="fa fa-facebook"></i></a>
+							<a href="{{daakhan_tw}}" class="btn btn-contacts btn-twitter" target="_blank"><i class="fa fa-twitter"></i></a>
+						</div>
 					</div>
 				</div>
-			</div>
 
-			<div class="col-sm-4 col-xs-6">
-				<div class="thumbnail">
-					<img class="contact-img" src="{% static 'home/images/2.png' %}" alt="">
-					<div class="caption">
-						<h5 class="team-name">Sarfaraz Nawaz <small>Manager</small></h5>
-						<p>Manager of 786 multi services</p>
-						<a href="{{sarfaraz_fb}}" class="btn btn-contacts btn-facebook" target="_blank"><i class="fa fa-facebook"></i></a>
-						<a href="{{sarfaraz_tw}}" class="btn btn-contacts btn-twitter" target="_blank"><i class="fa fa-twitter"></i></a>
+				<div class="col-sm-4 col-xs-6">
+					<div class="thumbnail">
+						<img class=" img-thumbnail img-circle img-responsive" src="{% static 'home/images/sarfaraz.jpg' %}" alt="" />
+						<div class="caption">
+							<h3 class="team-name">Sarfaraz Nawaz <small>Managing Director</small></h3>
+							<p>M. Comm, L.L.B and many other recognized degrees currently Serving INDIAN NAVY. manages and executes all the plans for the organisation</p>
+							<a href="{{sarfaraz_fb}}" class="btn btn-contacts btn-facebook" target="_blank"><i class="fa fa-facebook"></i></a>
+							<a href="{{sarfaraz_tw}}" class="btn btn-contacts btn-twitter" target="_blank"><i class="fa fa-twitter"></i></a>
+						</div>
 					</div>
 				</div>
-			</div>
 
-			<div class="col-sm-4 col-xs-6">
-				<div class="thumbnail">
-					<img class="contact-img" src="{% static 'home/images/zeeshan.jpg' %}" alt="">
-					<div class="caption">
-						<h5 class="team-name">Zeeshan Khan <small>Designer</small></h5>
-						<p>Designer of this website</p>
-						<a href="{{zeeshan_fb}}" class="btn btn-contacts btn-facebook" target="_blank"><i class="fa fa-facebook"></i></a>
-						<a href="{{zeeshan_tw}}" class="btn btn-contacts btn-twitter" target="_blank"><i class="fa fa-twitter"></i></a>
+				<div class="col-sm-4 col-xs-6">
+					<div class="thumbnail">
+						<img class="img-thumbnail img-circle img-responsive" src="{% static 'home/images/zeeshan.jpg' %}" alt="" />
+						<div class="caption">
+							<h3 class="team-name">Zeeshan Khan <small>Web &amp; Mobile developer at TATA Consultancy Services Ltd. </small></h3>
+							<p>B. Tech in Computer Science and Engg. currently working in TCS, his intutive approach and technical knowledge has helped this organisation to expand their wings.</p>
+							<a href="{{zeeshan_fb}}" class="btn btn-contacts btn-facebook" target="_blank"><i class="fa fa-facebook"></i></a>
+							<a href="{{zeeshan_tw}}" class="btn btn-contacts btn-twitter" target="_blank"><i class="fa fa-twitter"></i></a>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-		</div>
-		</div>
-		<div class="row section" id="about">
+	</div>
+	<div class="row section" id="about">
 		<h4 class="heading">About</h4>
 		<div class="container">
 			<div class="row col-sm-8 col-sm-offset-2">
 				<p>786 Multi Services is a service provider, A Internet shop has been set up to serve people of Illia and nearby.</p>
 			</div>
 		</div>
-		</div>
-		<div class="row section" id="contact">
+	</div>
+	<div class="row section" id="contact">
 		<h4 class="heading">Feel free to contact Us</h4>
 		<div class="container">
-			<div class="col-md-10 col-lg-8 col-sm-12 col-md-offset-1 col-lg-offset-2">
+			<div class="col-md-6">
+				<div class="">
+					<div id="map"></div>
+				</div>
+			</div>
+			<div class="col-md-6">
 				<form class="form" method="post" action=".">
 					<div class="row">
 						{% if success_msg %}
-							<div class="alert alert-success">{{success_msg}}</div>
+						<div class="alert alert-success">{{success_msg}}</div>
 						{% endif %}
 					</div>
 					<div class="row">
 						{% csrf_token %}
-						<div class="col-sm-6">
-							<div class="form-group {%if form.name.errors%}error{%endif%}">
-								{{form.name}}
-								{{form.name.errors}}
-							</div>
-							<div class="form-group {%if form.email.errors%}error{%endif%}">
-								{{form.email}}
-								{{form.email.errors}}
-							</div>
-							<div class="form-group">
-								<div class="input-group">
-									{{form.captcha}}{{form.captcha.errors}}
-								</div>
-							</div>
+
+						<div class="form-group {%if form.name.errors%}error{%endif%}">
+							{{form.name}} {{form.name.errors}}
 						</div>
-						<div class="col-sm-6">
-							<div class="form-group">
-								{{form.message}}
-								{{form.message.errors}}
+						<div class="form-group {%if form.email.errors%}error{%endif%}">
+							{{form.email}} {{form.email.errors}}
+						</div>
+						<div class="form-group">
+							{{form.message}} {{form.message.errors}}
+						</div>
+						<div class="form-group">
+							<div class="input-group">
+								{{form.captcha}}{{form.captcha.errors}}
 							</div>
 						</div>
 					</div>
 					<div class="row">
-						<div class="col-sm-2 col-sm-offset-5">
-
-						<div class="form-group">
-							<button type="submit" class="btn btn-default" >Submit</button>
-						</div>
-						</div>
+						<button type="submit" class="btn btn-default btn-lg">Submit</button>
+						<button type="reset" class="btn btn-primary btn-lg">Reset</button>
 					</div>
 				</form>
 			</div>
+
 		</div>
 	</div>
-		</div>
+</div>
 {% endblock %}
