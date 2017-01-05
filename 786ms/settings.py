@@ -41,7 +41,7 @@ else:
 # TEMPLATE_DEBUG = DEBUG
 
 if DEBUG:
-     ALLOWED_HOSTS = ['786ms.baangeeclub.in','multi-services-786.herokuapp.com','localhost']
+     ALLOWED_HOSTS = ['www.786ms.baangeeclub.in','786ms.baangeeclub.in','multi-services-786.herokuapp.com','localhost']
 else:
      ALLOWED_HOSTS = ['*']
 
