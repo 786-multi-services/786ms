@@ -60,49 +60,9 @@
 			</div>
 		</nav>
 		<div class="head teal" id="home">
-			<div class="container-fluid no-padding carousel-container">
-				<div class="carousel">
-					<div class="carousel-item row">
-						<div class="col-sm-6 cell">
-							<img class="img-responsive" src="{% static 'home/images/banner1.png' %}" />
-						</div>
-						<div class="col-sm-6 cell">
-							<div class="container">
-								<h1>Computer classes &amp; Courses</h1>
-								<h3>courses from Digital India initiative and other recognized organizations</h3>
-							</div>
-						</div>
-					</div>
-					<div class="carousel-item row">
-						<div class="col-sm-6 cell">
-							<img class="img-responsive" src="{% static 'home/images/banner3.png' %}" />
-						</div>
-						<div class="col-sm-6 cell">
-							<div class="container">
-								<h1>Online Booking &amp; Reservations</h1>
-								<h3>Air, Railways and Bus tickets and hotels booking</h3>
-							</div>
-						</div>
-					</div>
-					<div class="carousel-item row">
-						<div class="col-sm-6 cell">
-							<img class="img-responsive" src="{% static 'home/images/banner3.png' %}" />
-						</div>
-						<div class="col-sm-6 cell">
-							<div class="container">
-								<h1>Online Booking &amp; Reservations</h1>
-								<h3>courses from Digital India initiative and other recognized organizations</h3>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					{% block body_head_title %} {% endblock %}
-				</div>
-				<div class="row">
-					{% block body_head_content %} {% endblock %}
-				</div>
-			</div>
+			{% block header %}
+				{% endblock %}
+		</div>
 		</div>
 		{% block body_block%} {% endblock %}
 		<div id="push"></div>

@@ -1,11 +1,45 @@
 {% extends 'base.html' %} {% load staticfiles %} {% block head_block%}
 <!--custom css-->
-<link rel="stylesheet" href="{% static 'home/css/home_main.css'%}" /> {% endblock %} {% block body_head_title%}
-<!-- <h1 class="heading col-xs-8 col-xs-offset-2">786 Multi Services<br>
-				<small >Illia Road, Chandauli, U.P, India</small></h1>  -->
-{% endblock%} {% block body_head_content %}
-<!-- <h4>We have all the services you need.</h4>  -->
-{% endblock%} {%block js_include%}
+<link rel="stylesheet" href="{% static 'home/css/home_main.css'%}" /> {% endblock %}
+{% block header %}
+<div class="container-fluid no-padding carousel-container">
+	<div class="carousel">
+		<div class="carousel-item row">
+			<div class="col-sm-6 cell">
+				<img class="img-responsive" src="{% static 'home/images/banner1.png' %}" />
+			</div>
+			<div class="col-sm-6 cell">
+				<div class="container">
+					<h1>Computer classes &amp; Courses</h1>
+					<h3>courses from Digital India initiative and other recognized organizations</h3>
+				</div>
+			</div>
+		</div>
+		<div class="carousel-item row">
+			<div class="col-sm-6 cell">
+				<img class="img-responsive" src="{% static 'home/images/banner3.png' %}" />
+			</div>
+			<div class="col-sm-6 cell">
+				<div class="container">
+					<h1>Online Booking &amp; Reservations</h1>
+					<h3>Air, Railways and Bus tickets and hotels booking</h3>
+				</div>
+			</div>
+		</div>
+		<div class="carousel-item row">
+			<div class="col-sm-6 cell">
+				<img class="img-responsive" src="{% static 'home/images/banner3.png' %}" />
+			</div>
+			<div class="col-sm-6 cell">
+				<div class="container">
+					<h1>Online Booking &amp; Reservations</h1>
+					<h3>courses from Digital India initiative and other recognized organizations</h3>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock%}
+{%block js_include%}
 <script src='https://www.google.com/recaptcha/api.js'></script>
 <script>
 	function initMap() {
@@ -26,7 +60,9 @@
 </script>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDGQqJtL1kWp06Qmp0w1SmNDAjPRIUjQKU&callback=initMap">
 </script>
-{% endblock%} {% block body_block %} {% if news_list %}
+{% endblock%}
+
+{% block body_block %} {% if news_list %}
 <div class="panel panel-default">
 	<div class="container-fluid">
 		<marquee direction="left">
